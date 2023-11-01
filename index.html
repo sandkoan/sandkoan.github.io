@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Floating Point-8 Bit (bf8)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            color: #333333;
+        }
+        p {
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Binary Floating Point-8 Bit (bf8) Specification</h1>
+        <h2>Overview</h2>
+        <p>The bf8 format is designed as a compact floating-point representation technique. It aims to provide a balance between range, precision, computational requirements, making it ideal for applications with limited memory or bandwidth.</p>
+        
+        <h2>Bit Allocation</h2>
+        <p>bf8 format represents a floating-point number using a total of 8 bits:</p>
+        <ul>
+            <li>One bit for the sign</li>
+            <li>Three bits for the exponent</li>
+            <li>Four bits for the fraction</li>
+        </ul>
+        
+        <h2>Representation</h2>
+        <p>A bf8 number N can be represented using formula: N = (-1)^sign * 1.fraction * 2^(exponent – bias)</p>
+
+        <h2>Special Numbers</h2>
+        <ul>
+            <li>Infinity: Exponent of all 1s and fraction of all 0s</li>
+            <li>Negative Infinity: Infinity with sign bit set as 1</li>
+            <li>NaN (Not a Number): Exponent of all 1s and non-zero fraction</li>
+        </ul>
+
+        <h2>Denormalized Numbers</h2>
+        <p>When the exponent field is all-zero (0), the number is to be interpreted in a denormalized form: Ndenormalized = (-1) ^ sign * 0.fraction * 2^(1 – bias)</p>
+        
+        <h2>Rounding</h2>
+        <p>Rounding should adhere to the IEEE 754 standard, including the round-to-nearest-even rule (banker’s rounding).</p>
+        
+        <h2>Operations</h2>
+        <p>The basic operations for addition, subtraction, multiplication, and division should conform to the IEEE 754 standard rules, which include handling overflows, underflows, and exceptions accordingly.</p>
+        
+        <h2>Implementation</h2>
+        <p>This specification should be implemented in a low-level language to interface with the hardware instruction sets. It should also include functionalities for handling compound operations such as fused multiply-add.</p>
+        
+        <h2>Application</h2>
+        <p>bf8 format is ideal for memory constrained applications or architectures, including embedded devices, IoT devices, and machine learning applications.</p>
+        
+        <h2>Disclaimer</h2>
+        <p>The bf8 format can lack precision due to its reduced number of bits and should therefore not be used for applications that require high precision.</p>
+    </div>
+</body>
+</html>
